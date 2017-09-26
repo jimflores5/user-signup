@@ -12,24 +12,28 @@
     </head>
     <body>
     <h1 align="center">Signup</h1>
-        <form method="post">
+        <form method="POST">
             <label for="username">Username</label>
-            <input name="username" value="" type="text">
-            <span class="error"></span><br/><br/>
+            <input name="username" value="" type="text" />
+            {% if {{error}} == 'username' %}
+                {% block invalid_username %}
+                {% endblock %}
+            {% endif %}
+            <br/><br/>
             
-            <label for="password">Password</label></td>
-            <input name="password" type="password">
-            <span class="error"></span><br/><br/>
+            <label for="password">Password</label>
+            <input name="password" type="password" />
+            <br/><br/>
 
-            <label for="verify">Verify Password</label></td>
-            <input name="verify" type="password">
-            <span class="error"></span><br/><br/>
+            <label for="verify">Verify Password</label>
+            <input name="verify" type="password" />
+            <br/><br/>
 
-            <label for="email">Email (optional)</label></td>
-            <input name="email" value="">
-            <span class="error"></span><br/><br/>
+            <label for="email">Email (optional)</label>
+            <input name="email" value="" type="text" />
+            <br/><br/>
             <br/>
-            <input type="submit" value="Register">
+            <input type="submit" value="Register"/>
         </form>
     
 </body>
