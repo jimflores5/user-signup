@@ -6,7 +6,7 @@
                 color: red;
             }
             form{
-                text-align: center;
+                text-align: left;
             }
         </style>
     </head>
@@ -14,15 +14,13 @@
     <h1 align="center">Signup</h1>
         <form method="POST">
             <label for="username">Username</label>
-            <input name="username" value="" type="text" />
-            {% if {{error}} == 'username' %}
-                {% block invalid_username %}
-                {% endblock %}
-            {% endif %}
+            <input name="username" value="{{name}}" type="text" />
+            <span class="error">{{name_error}}</span>
             <br/><br/>
             
             <label for="password">Password</label>
             <input name="password" type="password" />
+            <span class="error">{{pass_error}}</span>
             <br/><br/>
 
             <label for="verify">Verify Password</label>
