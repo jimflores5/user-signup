@@ -15,32 +15,35 @@ def user_name_valid():
     password = request.form['password']
     verify_password = request.form['verify']
 
+    name_error = ''
+    pass_error = ''
+
     if user_name == '':
         name_error = 'Please enter a user name.'
-        return render_template('form_fields.html',name=user_name,name_error=name_error)
     elif len(user_name)<3 or len(user_name)>20:
-        name_error = 'User name must be between 3 & 20 characters.'
+        name_error = 'User name must be 3 - 20 characters long.'
         user_name = ''
-        return render_template('form_fields.html',name=user_name,name_error=name_error)
     elif " " in user_name:
         name_error = 'Username cannot contain spaces.'
         user_name = ''
-        return render_template('form_fields.html',name=user_name,name_error=name_error)
 
     if password == '':
         pass_error = 'Please enter a password.'
-        return render_template('form_fields.html',password=password,pass_error=pass_error)
     elif len(password)<3 or len(password)>10:
         pass_error = 'Password must be 3 - 10 characters long.'
         password = ''
-        return render_template('form_fields.html',password=password,pass_error=pass_error)
+        verify_password = ''
     elif " " in password:
         pass_error = 'Password cannot contain spaces.'
         password = ''
-        return render_template('form_fields.html',password=password,pass_error=pass_error)
-    
-
-    return render_template('success.html')
-
+        verify_password = ''
+    elif verify_password != password:
+        pass_error = 'Passwords do not match.'
+        verify_password = ''
+        
+    if name_error == '' and pass_error == '':
+        return render_template('success.html')
+    else:
+        return render_template('form_fields.html',name=user_name, password=password,verify_password=verify_password,name_error=name_error,pass_error=pass_error)
 
 app.run()

@@ -6,7 +6,7 @@
                 color: red;
             }
             form{
-                text-align: left;
+                text-align: center;
             }
         </style>
     </head>
@@ -15,16 +15,17 @@
         <form method="POST">
             <label for="username">Username</label>
             <input name="username" value="{{name}}" type="text" />
-            <span class="error">{{name_error}}</span>
+            <br/><span class="error">{{name_error}}</span>
             <br/><br/>
             
             <label for="password">Password</label>
-            <input name="password" type="password" />
-            <span class="error">{{pass_error}}</span>
+            <input name="password" type="password" value="{{password}}"/>
+            <br/><span class="error">{{pass_error}}</span>
             <br/><br/>
 
             <label for="verify">Verify Password</label>
-            <input name="verify" type="password" />
+            <input name="verify" type="password" value="{{verify_password}}"/>
+            <br/><span class="error">{{verify_error}}</span>
             <br/><br/>
 
             <label for="email">Email (optional)</label>
